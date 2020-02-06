@@ -7,18 +7,23 @@ package editor;
 
 import editor.action.EditorAction;
 import editor.action.InsertAction;
+import editor.action.DeleteAction;
+import editor.action.MoveAction;
 import editor.display.CharacterDisplay;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.HeadlessException;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.InputEvent;
 import javax.swing.ActionMap;
 import javax.swing.InputMap;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.KeyStroke;
 import javax.swing.WindowConstants;
+
 
 /**
  * Editor is the main class of the editor application. It is mainly responsible
@@ -46,7 +51,7 @@ public class Editor extends JFrame {
     Document doc;
 
     public Editor() throws HeadlessException {
-        super("Simple Text Editor");
+        super("Advanced Text Editor");
 
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
@@ -97,11 +102,25 @@ public class Editor extends JFrame {
     public void addKeyMappings() {
         inputMap.clear();
         actionMap.clear();
-        for (char ch = 'a'; ch <= 'z'; ch++) {
+        //adds characters
+        char ch;
+        for (ch = '\b'; ch <= 'ø'; ch++) {
             String name = "insertChar";
             EditorAction action = new InsertAction(name, this);
             addKeyMapping(KeyStroke.getKeyStroke(ch), action);
+
+            if (ch == '\b') {
+                name = "deleteChar";
+                EditorAction actions = new DeleteAction(name, this);
+                addKeyMapping(KeyStroke.getKeyStroke(ch), actions);
+            }
         }
+        addKeyMapping(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, InputEvent.ALT_MASK), new MoveAction("moveLeft", "LEFT", this));
+        addKeyMapping(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, InputEvent.ALT_MASK), new MoveAction("moveRight", "RIGHT", this));
+        addKeyMapping(KeyStroke.getKeyStroke(KeyEvent.VK_UP, InputEvent.ALT_MASK), new MoveAction("moveUp", "UP", this));
+        addKeyMapping(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, InputEvent.ALT_MASK), new MoveAction("moveDown", "DOWN", this));
+
+        
     }
 
     public CharacterDisplay getDisplay() {

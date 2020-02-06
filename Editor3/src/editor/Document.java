@@ -5,6 +5,8 @@
  */
 package editor;
 
+import java.util.LinkedList;
+
 import editor.display.CharacterDisplay;
 
 /**
@@ -21,24 +23,66 @@ public class Document {
     private CharacterDisplay display;
     private int cursorRow;
     private int cursorCol;
-    private char[][] data;
+    LinkedList<Character> cCol = new LinkedList<>();
+    LinkedList<Character> cRow = new LinkedList<>();
 
     public Document(CharacterDisplay display) {
         this.display = display;
-        data = new char[CharacterDisplay.HEIGHT][CharacterDisplay.WIDTH];
         cursorCol = cursorRow = 0;
-        display.displayCursor(' ', cursorRow, cursorCol);
+    // Fill the list to avoid IndexOutOfBoundsException
+        int i = 0;
+        int j = 0;
+         while (i <= 1000) {
+            cRow.add(' ');
+            i++;
+          }
+
+          while (j <= 1000) {
+              cCol.add(' ');
+              j++;
+          }
     }
 
     public void insertChar(char c) {
-        data[cursorRow][cursorCol] = c;
+
+        cRow.add(cursorRow, c);
+        cCol.add(cursorCol, c);
         display.displayChar(c, cursorRow, cursorCol);
+        display.displayCursor(' ',cursorRow, cursorCol);
+
         cursorCol++;
         if (cursorCol >= CharacterDisplay.WIDTH) {
             cursorCol = 0;
             cursorRow++;
         }
-        display.displayCursor(data[cursorRow][cursorCol],
-                              cursorRow, cursorCol);
+            
     }
+
+    public void deleteChar(char c) {
+        cursorCol--;
+        display.displayChar(' ', cursorRow, cursorCol);
+        display.displayCursor(' ',cursorRow, cursorCol);    
+    }
+
+    public void moveUp() {
+        cursorRow--;
+        display.displayCursor(' ', cursorRow, cursorCol);
+    }
+
+    public void moveDown() {
+        cursorRow++;
+        display.displayCursor(' ', cursorRow, cursorCol);
+    }
+
+    public void moveRight() {
+        cursorCol++;
+        display.displayCursor(' ', cursorRow, cursorCol);
+    }
+
+    public void moveLeft() {
+        cursorCol--;
+        display.displayCursor(' ', cursorRow, cursorCol);
+    }
+
 }
+
