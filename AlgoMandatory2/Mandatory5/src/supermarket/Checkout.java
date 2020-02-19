@@ -5,6 +5,7 @@
  */
 package supermarket;
 
+import java.util.ArrayList;
 
 /**
  *
@@ -19,20 +20,43 @@ public class Checkout {
 
     SuperMarket shop;
     String name;
-    Customer[] customers; 
+    ArrayList<Customer> customers; 
 
 
     public Checkout(SuperMarket shop, int i) {
         this.shop = shop;
         this.name = "Checkout" + i;
+        customers = new ArrayList<Customer>();
     }
 
-    // public void addCustomerToQueue(Customer customer) {
 
-    // }
 
-    // public int serveCustomer(Customer customer) {
+   
+    // kalkulerer hvor lang tid det tar å scanne og betale for varene for en kunde
+    public int calcScanPay(Customer customer) {
         
-    //     int checkoutTime = PAY_DURATION + PROD_DURATION * customer.numProducts;
-    // }
+        int scanPay = PAY_DURATION + PROD_DURATION * customer.numProducts;
+        return scanPay;
+    }
+
+    //regner ut hvor lenge kunden må vente i kø
+    public int calcQue(ArrayList<Customer> customers, Customer customer) {
+        
+       
+        int queTime = 0; 
+
+        for (Customer c : customers) {
+
+            queTime = queTime + c.checkoutTime;
+            System.out.println("que time loop: " + queTime);
+        }
+        System.out.println("final que time " + queTime);
+        
+        return queTime - customer.checkoutTime; 
+        
+    } 
+
+
+
+    
 }

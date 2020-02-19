@@ -28,6 +28,7 @@ public class EndShoppingEvent extends Event {
     public Event happen() {
         customer.leaveTime = customer.checkoutTime + customer.checkoutDuration;
         return null;
+        
     }
 
 

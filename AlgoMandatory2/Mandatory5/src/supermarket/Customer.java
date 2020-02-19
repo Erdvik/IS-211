@@ -29,14 +29,14 @@ public class Customer {
     SuperMarket shop;
     String name;
 
-    int beginShoppingTime;
-    int shoppingDuration;
-    int numProducts;
-    int endShoppingTime;
-    int queueWaitDuration;
-    int checkoutTime;
-    int checkoutDuration;
-    int leaveTime;
+    int beginShoppingTime; //har
+    int shoppingDuration; //har
+    int numProducts; //har
+    int endShoppingTime; //har
+    int queueWaitDuration; // ikke
+    int checkoutTime; // ikke
+    int checkoutDuration; //har
+    int leaveTime; //har
 
     public Customer(SuperMarket shop, int i) {
         this.shop = shop;

@@ -23,7 +23,7 @@ public class SuperMarket {
     }
 
     public static final int NUM_CHECKOUTS = 1;
-    public static final int NUM_CUSTOMERS = 4;
+    public static final int NUM_CUSTOMERS = 20;
 
     String name = "Joker"; 
     Checkout[] checkouts;
