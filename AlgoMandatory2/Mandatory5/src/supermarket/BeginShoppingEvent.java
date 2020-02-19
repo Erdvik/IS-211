@@ -9,7 +9,7 @@ import eventsim.Event;
 
 
 /**
- * A customer enters the shop
+ * A customer enters the shop and starts buying stuff maybe
  *
  * @author evenal
  */
@@ -20,11 +20,17 @@ public class BeginShoppingEvent extends Event {
     public BeginShoppingEvent(Customer customer) {
         super(customer.beginShoppingTime);
         this.customer = customer;
+        System.out.println(customer.name + " has entered store " + customer.shop.name + " at " + customer.beginShoppingTime);
     }
 
 
     @Override
-    public Event happen() {
-        return new EndShoppingEvent(customer);
+    public Event happen() { 
+        if (customer.numProducts == 0) {
+            return new EndShoppingEvent(customer);
+        }
+        else {
+            return new GoToCheckoutEvent(customer);
+        }
     }
 }

@@ -14,27 +14,23 @@ import eventsim.EventSim;
  *
  * @author evenal
  */
-public class EndShoppingEvent extends Event {
+public class GoToCheckoutEvent extends Event {
     Customer customer;
+    Checkout checkout;
 
-
-    public EndShoppingEvent(Customer customer) {
+    public GoToCheckoutEvent(Customer customer) {
         super(EventSim.getClock() + customer.shoppingDuration);
         this.customer = customer;
+        checkout = customer.chooseCheckout(customer);
+		System.out.println(customer.name + " has " + customer.numProducts 
+        + " products in the cart and has used " + customer.shoppingDuration 
+        + " minutes before going to " + checkout.name); 
     }
 
 
     @Override
     public Event happen() {
-        customer.leaveTime = customer.checkoutTime + customer.checkoutDuration;
-        return null;
-    }
-
-
-    @Override
-    public String toString() {
-        return "EndShoppingEvent{" + getTime() + " cust=" + customer.name
-                + " " + customer.shoppingDuration + '}';
+        return new JoinQeueEvent(customer, checkout);
     }
 
 }

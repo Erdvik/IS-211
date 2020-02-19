@@ -25,6 +25,7 @@ public class SuperMarket {
     public static final int NUM_CHECKOUTS = 1;
     public static final int NUM_CUSTOMERS = 4;
 
+    String name = "Joker"; 
     Checkout[] checkouts;
     List<Customer> customers;
     List<Event> init;

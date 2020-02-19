@@ -10,15 +10,14 @@ import eventsim.EventSim;
 
 
 /**
- * 
+ *
  *
  * @author evenal
  */
-public class EndShoppingEvent extends Event {
+public class CheckoutCustomerEvent extends Event {
     Customer customer;
 
-
-    public EndShoppingEvent(Customer customer) {
+    public CheckoutCustomerEvent(Customer customer) {
         super(EventSim.getClock() + customer.shoppingDuration);
         this.customer = customer;
     }
@@ -26,15 +25,7 @@ public class EndShoppingEvent extends Event {
 
     @Override
     public Event happen() {
-        customer.leaveTime = customer.checkoutTime + customer.checkoutDuration;
-        return null;
-    }
-
-
-    @Override
-    public String toString() {
-        return "EndShoppingEvent{" + getTime() + " cust=" + customer.name
-                + " " + customer.shoppingDuration + '}';
+        return new EndShoppingEvent(customer);
     }
 
 }

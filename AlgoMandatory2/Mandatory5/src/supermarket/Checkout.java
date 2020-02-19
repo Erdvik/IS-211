@@ -19,10 +19,20 @@ public class Checkout {
 
     SuperMarket shop;
     String name;
+    Customer[] customers; 
 
 
     public Checkout(SuperMarket shop, int i) {
         this.shop = shop;
         this.name = "Checkout" + i;
     }
+
+    // public void addCustomerToQueue(Customer customer) {
+
+    // }
+
+    // public int serveCustomer(Customer customer) {
+        
+    //     int checkoutTime = PAY_DURATION + PROD_DURATION * customer.numProducts;
+    // }
 }
