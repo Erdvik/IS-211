@@ -7,6 +7,8 @@ package supermarket;
 
 import java.util.ArrayList;
 
+import eventsim.EventSim;
+
 /**
  *
  * @author evenal
@@ -44,15 +46,16 @@ public class Checkout {
         
        
         int queTime = 0; 
+        int tqueTime = queTime - customer.checkoutTime;
 
         for (Customer c : customers) {
 
             queTime = queTime + c.checkoutTime;
             System.out.println("que time loop: " + queTime);
         }
-        System.out.println("final que time " + queTime);
+        System.out.println("Time " + EventSim.getClock() + ". final que time " + tqueTime);
         
-        return queTime - customer.checkoutTime; 
+        return tqueTime; 
         
     } 
 
