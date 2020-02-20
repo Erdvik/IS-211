@@ -19,13 +19,13 @@ public class CheckoutCustomerEvent extends Event {
     Customer customer;
 
     public CheckoutCustomerEvent(Customer customer, Checkout checkout) {
-        super(EventSim.getClock() + customer.shoppingDuration + customer.queueWaitDuration);
+        super(EventSim.getClock());
         this.customer = customer;
         
-        //legger til hvor lenge kunen var i kassen totalt
+        //legger til hvor lenge kunden var i kassen totalt
         customer.checkoutDuration = customer.queueWaitDuration + customer.scanPayTime;
 
-        System.out.println(customer.name+ " used " + customer.checkoutDuration +
+        System.out.println(EventSim.getClock()+ customer.name+ " used " + customer.checkoutDuration +
          " seconds total in the checkout");
 
         // fjerner kunden fra listen 

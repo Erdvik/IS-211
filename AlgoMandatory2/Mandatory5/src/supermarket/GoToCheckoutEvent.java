@@ -22,7 +22,7 @@ public class GoToCheckoutEvent extends Event {
         super(EventSim.getClock() + customer.shoppingDuration);
         this.customer = customer;
         checkout = customer.chooseCheckout(customer);
-		System.out.println(customer.name + " has " + customer.numProducts 
+		System.out.println(EventSim.getClock()+customer.name + " has " + customer.numProducts 
         + " products in the cart and has used " + customer.shoppingDuration 
         + " seconds before going to " + checkout.name); 
 

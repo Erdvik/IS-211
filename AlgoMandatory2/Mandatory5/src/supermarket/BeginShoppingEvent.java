@@ -6,6 +6,7 @@
 package supermarket;
 
 import eventsim.Event;
+import eventsim.EventSim;
 
 
 /**
@@ -20,7 +21,7 @@ public class BeginShoppingEvent extends Event {
     public BeginShoppingEvent(Customer customer) {
         super(customer.beginShoppingTime);
         this.customer = customer;
-        System.out.println(customer.name + " has entered store " + customer.shop.name + " at " + customer.beginShoppingTime);
+        System.out.println(EventSim.getClock() + customer.name + " has entered store " + customer.shop.name + " at " + EventSim.getClock());
     }
 
 
