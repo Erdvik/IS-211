@@ -24,7 +24,10 @@ public class GoToCheckoutEvent extends Event {
         checkout = customer.chooseCheckout(customer);
 		System.out.println(customer.name + " has " + customer.numProducts 
         + " products in the cart and has used " + customer.shoppingDuration 
-        + " minutes before going to " + checkout.name); 
+        + " seconds before going to " + checkout.name); 
+
+       //regner ut hvor lang tid kunden kommer til å bruke på å skanne og betale og legger det til i chekoutTime.
+       customer.scanPayTime = checkout.calcScanPay(customer); 
     }
 
 

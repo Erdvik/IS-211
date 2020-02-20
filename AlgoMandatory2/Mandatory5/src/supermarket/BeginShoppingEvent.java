@@ -30,7 +30,7 @@ public class BeginShoppingEvent extends Event {
             return new EndShoppingEvent(customer);
         }
         else {
-                return new GoToCheckoutEvent(customer);
+            return new GoToCheckoutEvent(customer);
             }
     }
 }

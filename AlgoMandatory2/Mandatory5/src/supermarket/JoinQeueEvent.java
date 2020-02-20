@@ -5,6 +5,8 @@
  */
 package supermarket;
 
+import java.util.ArrayList;
+
 import eventsim.Event;
 import eventsim.EventSim;
 
@@ -21,16 +23,16 @@ public class JoinQeueEvent extends Event {
     public JoinQeueEvent(Customer customer, Checkout checkout) {
         super(EventSim.getClock() + customer.shoppingDuration);
         this.customer = customer;
-        checkout.customers.add(customer);
-       
-        int currentTime = EventSim.getClock(); 
         this.checkout = checkout;
-       
 
-        System.out.println(customer.name + " joined the que at " + checkout.customers.size());
-        // System.out.println(checkout.name + " had a queue of " + checkout.customers.length + ", therefore " +
-        // customer.name + " had to wait " + checkoutQueTime(customer) + " . The ");
-         System.out.println( currentTime + "test" + checkout.calcScanPay(customer)); 
+        checkout.customers.add(customer);
+
+        //regner ut tiden i kø
+        customer.queueWaitDuration = checkout.calcQue(checkout.customers, customer);
+
+        System.out.println(checkout.name + " had a queue of " + checkout.customers.size() + ", therefore " +
+        customer.name + " had to wait " + customer.queueWaitDuration + " seconds ");
+
     }
 
 

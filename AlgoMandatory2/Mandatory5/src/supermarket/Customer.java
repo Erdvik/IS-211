@@ -23,20 +23,29 @@ public class Customer {
 
     // customer will spend ranom amount of time between these values before
     // going to check out
-    public static final int MAX_SHOP_TIME = 100;
+    public static final int MAX_SHOP_TIME = 1000;
     public static final int MIN_SHOP_TIME = 1;
 
     SuperMarket shop;
     String name;
 
-    int beginShoppingTime; //har
-    int shoppingDuration; //har
-    int numProducts; //har
-    int endShoppingTime; //har
-    int queueWaitDuration; // ikke
-    int checkoutTime; // ikke
-    int checkoutDuration; //har
-    int leaveTime; //har
+    int beginShoppingTime; //ferdig 
+    int shoppingDuration; //ferdig
+    int numProducts; //ferdig
+    int endShoppingTime; //ferdig
+    
+    int queueWaitDuration; // hvor lenge kunden venter i køen
+    // (get checkout list, loop gjennom listen, få checkout 
+    //duration for hver kunde og legg det til i quewaitduration )
+
+    int checkoutTime; // hvor lenge kunden bruker på å betale
+
+    int checkoutDuration; //hvor lenge kunden er i kassen totalt (quewait + checkouttime)
+
+
+    int leaveTime; //customer.checkoutTime + customer.checkoutDuration;  
+
+    int scanPayTime; //ferdig
 
     public Customer(SuperMarket shop, int i) {
         this.shop = shop;
@@ -44,7 +53,7 @@ public class Customer {
         beginShoppingTime = i;
         numProducts = EventSim.nextInt(MIN_PRODUCTS, MAX_PRODUCTS);
         shoppingDuration = EventSim.nextInt(MIN_SHOP_TIME, MAX_SHOP_TIME);
-        endShoppingTime = beginShoppingTime + shoppingDuration;
+        endShoppingTime = beginShoppingTime + shoppingDuration; 
     }
 
     // not finished

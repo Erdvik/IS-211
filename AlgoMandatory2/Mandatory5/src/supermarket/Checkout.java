@@ -44,18 +44,15 @@ public class Checkout {
     //regner ut hvor lenge kunden må vente i kø
     public int calcQue(ArrayList<Customer> customers, Customer customer) {
         
-       
         int queTime = 0; 
-        int tqueTime = queTime - customer.checkoutTime;
 
         for (Customer c : customers) {
 
-            queTime = queTime + c.checkoutTime;
-            System.out.println("que time loop: " + queTime);
-        }
-        System.out.println("Time " + EventSim.getClock() + ". final que time " + tqueTime);
-        
-        return tqueTime; 
+            if (!c.equals(customer)) {
+            queTime = queTime + c.scanPayTime;
+            }
+        }       
+        return queTime; 
         
     } 
 
