@@ -25,7 +25,7 @@ public class CheckoutCustomerEvent extends Event {
         //legger til hvor lenge kunden var i kassen totalt
         customer.checkoutDuration = customer.queueWaitDuration + customer.scanPayTime;
 
-        System.out.println(EventSim.getClock()+ customer.name+ " used " + customer.checkoutDuration +
+        System.out.println(customer.name+ " used " + customer.checkoutDuration +
          " seconds total in the checkout");
 
         // fjerner kunden fra listen 

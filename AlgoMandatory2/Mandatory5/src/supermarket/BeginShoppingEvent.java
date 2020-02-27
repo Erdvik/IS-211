@@ -21,7 +21,7 @@ public class BeginShoppingEvent extends Event {
     public BeginShoppingEvent(Customer customer) {
         super(customer.beginShoppingTime);
         this.customer = customer;
-        System.out.println(EventSim.getClock() + customer.name + " has entered store " + customer.shop.name + " at " + EventSim.getClock());
+        System.out.println(customer.name + " has entered store " + customer.shop.name + " at " + EventSim.getClock());
     }
 
 

@@ -25,10 +25,10 @@ public class EndShoppingEvent extends Event {
         //fjerner kunden fra butikken
         customer.shop.customers.remove(customer);
 
-        //customer.leaveTime = customer.checkoutTime + customer.checkoutDuration;
-        customer.leaveTime = EventSim.getClock();
+        customer.leaveTime = customer.beginShoppingTime + customer.shoppingDuration + customer.checkoutDuration;
+        
 
-        System.out.println(EventSim.getClock()+ customer.name + " leaved the store at time: " + customer.leaveTime);
+        System.out.println(customer.name + " leaved the store at time: " + customer.leaveTime);
     }
 
 

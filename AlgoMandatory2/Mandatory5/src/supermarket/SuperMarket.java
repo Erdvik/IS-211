@@ -22,8 +22,8 @@ public class SuperMarket {
         supern.startSim();
     }
 
-    public static final int NUM_CHECKOUTS = 1;
-    public static final int NUM_CUSTOMERS = 5;
+    public static final int NUM_CHECKOUTS = 3;
+    public static final int NUM_CUSTOMERS = 25;
 
     String name = "Joker"; 
     Checkout[] checkouts;

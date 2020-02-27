@@ -30,7 +30,7 @@ public class JoinQeueEvent extends Event {
         //regner ut tiden i kø
         customer.queueWaitDuration = checkout.calcQue(checkout.customers, customer);
 
-        System.out.println(EventSim.getClock()+ checkout.name + " had a queue of " + checkout.customers.size() + ", therefore " +
+        System.out.println(checkout.name + " had a queue of " + checkout.customers.size() + ", therefore " +
         customer.name + " had to wait " + customer.queueWaitDuration + " seconds ");
 
     }

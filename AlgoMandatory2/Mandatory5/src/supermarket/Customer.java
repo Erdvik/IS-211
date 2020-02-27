@@ -5,6 +5,7 @@
  */
 package supermarket;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,12 +19,12 @@ import eventsim.EventSim;
  */
 public class Customer {
     // customer will pick a random number of products between these two values
-    public static final int MAX_PRODUCTS = 50;
+    public static final int MAX_PRODUCTS = 20;
     public static final int MIN_PRODUCTS = 0;
 
     // customer will spend ranom amount of time between these values before
     // going to check out
-    public static final int MAX_SHOP_TIME = 1000;
+    public static final int MAX_SHOP_TIME = 100;
     public static final int MIN_SHOP_TIME = 1;
 
     SuperMarket shop;
@@ -58,6 +59,25 @@ public class Customer {
 
     // not finished
     public Checkout chooseCheckout(Customer customer) {
-        return customer.shop.checkouts[0];
+
+        Checkout checkout = customer.shop.checkouts[0];
+        
+
+        for(Checkout c : customer.shop.checkouts) {
+
+            if (c.customers.size() == 0) {
+                return c;
+            }
+          
+            else if(c.customers.size() == checkout.customers.size())  {
+                checkout = c;
+            }
+            else {
+                System.out.println("Feil");
+            }
+
+        }
+
+        return checkout;
     }
 }
