@@ -21,19 +21,15 @@ public class GoToCheckoutEvent extends Event {
     public GoToCheckoutEvent(Customer customer) {
         super(EventSim.getClock() + customer.shoppingDuration);
         this.customer = customer;
-        checkout = customer.chooseCheckout(customer);
-		System.out.println(customer.name + " has " + customer.numProducts 
-        + " products in the cart and has used " + customer.shoppingDuration 
-        + " seconds before going to " + checkout.name); 
+        
 
-       //regner ut hvor lang tid kunden kommer til å bruke på å skanne og betale og legger det til i chekoutTime.
-       customer.scanPayTime = checkout.calcScanPay(customer); 
+      
     }
 
 
     @Override
     public Event happen() {
-        return new JoinQeueEvent(customer, checkout);
+        return new JoinQeueEvent(customer);
     }
 
 }

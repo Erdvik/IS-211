@@ -69,11 +69,11 @@ public class Customer {
                 return c;
             }
           
-            else if(c.customers.size() == checkout.customers.size())  {
+            else if(c.customers.size() < checkout.customers.size())  {
                 checkout = c;
             }
             else {
-                System.out.println("Feil");
+                System.out.println(c.name + " has a que of " + c.customers.size() + ". " + customer.name + " goes to the next checkout");
             }
 
         }
