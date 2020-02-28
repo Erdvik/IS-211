@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package supermarket;
 
 import eventsim.Event;
@@ -10,25 +6,31 @@ import eventsim.EventSim;
 
 
 /**
- * A customer finishes shopping and heads for the checkout with the shortest
- * queue
+ * når kunden er ferdig og forlater butikken
  *
- * @author evenal
+ * @author magne og kanta
  */
 public class EndShoppingEvent extends Event {
     Customer customer;
 
-
     public EndShoppingEvent(Customer customer) {
-        super(EventSim.getClock() + customer.shoppingDuration);
+        super(EventSim.getClock() + customer.checkoutDuration);
         this.customer = customer;
+
+        //fjerner kunden fra butikken
+        customer.shop.customers.remove(customer);
+
+        //regner ut når kunden forlater butikken 
+        customer.leaveTime = customer.beginShoppingTime + customer.shoppingDuration + customer.checkoutDuration;
+        
+
+        System.out.println(customer.name + " leaved the store at time: " + customer.leaveTime);
     }
 
 
     @Override
     public Event happen() {
-        customer.leaveTime = customer.checkoutTime + customer.checkoutDuration;
-        return null;
+        return null;    
     }
 
 

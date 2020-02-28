@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package supermarket;
 
 import eventsim.Event;
@@ -12,7 +8,8 @@ import java.util.List;
 
 
 /**
- *
+ * Supermarket klassen
+ * 
  * @author evenal
  */
 public class SuperMarket {
@@ -22,9 +19,10 @@ public class SuperMarket {
         supern.startSim();
     }
 
-    public static final int NUM_CHECKOUTS = 1;
-    public static final int NUM_CUSTOMERS = 4;
+    public static final int NUM_CHECKOUTS = 3;
+    public static final int NUM_CUSTOMERS = 25;
 
+    String name = "Joker"; 
     Checkout[] checkouts;
     List<Customer> customers;
     List<Event> init;
