@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package supermarket;
 
 import eventsim.Event;
@@ -10,9 +5,9 @@ import eventsim.EventSim;
 
 
 /**
- *
- *
- * @author evenal
+ * Når en kunde blir behandlet i kassen
+ * 
+ * @author magne og kanta
  */
 public class CheckoutCustomerEvent extends Event {
     Checkout checkout;
@@ -28,7 +23,7 @@ public class CheckoutCustomerEvent extends Event {
         System.out.println(customer.name+ " used " + customer.checkoutDuration +
          " seconds total in the checkout");
 
-        // fjerner kunden fra listen 
+        // fjerner kunden fra kasse-køen 
         checkout.customers.remove(customer);
         System.out.println(customer.name + " has been removed from que" + checkout.customers.size());
 

@@ -10,9 +10,9 @@ import eventsim.EventSim;
 
 
 /**
- * 
+ * Event for når kunden går til kassen 
  *
- * @author evenal
+ * @author magne og kanta
  */
 public class GoToCheckoutEvent extends Event {
     Customer customer;
@@ -21,11 +21,8 @@ public class GoToCheckoutEvent extends Event {
     public GoToCheckoutEvent(Customer customer) {
         super(EventSim.getClock() + customer.shoppingDuration);
         this.customer = customer;
-        
-
-      
+             
     }
-
 
     @Override
     public Event happen() {

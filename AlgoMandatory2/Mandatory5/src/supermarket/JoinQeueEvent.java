@@ -1,20 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package supermarket;
 
-import java.util.ArrayList;
+package supermarket;
 
 import eventsim.Event;
 import eventsim.EventSim;
 
 
 /**
- * 
+ * Event når kunden velger kasse-kø
  *
- * @author evenal
+ * @author magne og kanta
  */
 public class JoinQeueEvent extends Event {
     Customer customer;
@@ -23,13 +17,13 @@ public class JoinQeueEvent extends Event {
     public JoinQeueEvent(Customer customer) {
         super(EventSim.getClock() + customer.shoppingDuration);
         this.customer = customer;
-        this.checkout = customer.chooseCheckout(customer);
+        this.checkout = customer.chooseCheckout(customer); // kunden velger kasse
 
 		System.out.println(customer.name + " has " + customer.numProducts 
         + " products in the cart and has used " + customer.shoppingDuration 
         + " seconds before going to " + checkout.name); 
 
-        checkout.customers.add(customer);
+        checkout.customers.add(customer); //legger til kunden i køen
 
         //regner ut hvor lang tid kunden kommer til å bruke på å skanne og betale og legger det til i chekoutTime.
         customer.scanPayTime = checkout.calcScanPay(customer); 
