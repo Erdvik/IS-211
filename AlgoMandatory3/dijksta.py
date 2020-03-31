@@ -13,7 +13,6 @@ graph = {
 
 def dijkstras(graph, start):
   distances = {}
-  path = {}
   
   for vertex in graph:
     distances[vertex] = inf
@@ -37,7 +36,7 @@ print("Graph:")
 print("")
 print(graph)
 print("")
-print("Cheapest distance to connect all locations usind Dijkstra's algorithm: ")
+print("Cheapest distance to connect all locations using Dijkstra's algorithm: ")
 print("")
 for main_vertex in graph:
   distances = dijkstras(graph, main_vertex)
